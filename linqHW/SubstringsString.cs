@@ -8,6 +8,10 @@ namespace linqHW
 
         public static void DoSubstring()
         {
+            var expected = new List<string> { "a", "b", "c", "d", "ab", "bc", "cd", "abc", "bcd", "abcd" };
+            expected.Sort();
+
+            
             List<string> endSubstrings = new List<string>();
             // List<string> endSubstrings = Text.Select(c => c.ToString()).ToList();
 
@@ -20,8 +24,9 @@ namespace linqHW
                 }
             }
 
-            Console.WriteLine("Equals returns: " + Equals(endSubstrings,
-                new List<string> { "a", "b", "c", "d", "ab", "bc", "cd", "abc", "bcd", "abcd" }));
+            var sorted = endSubstrings.OrderBy(word => word).ToList();
+
+            Console.WriteLine("Equals returns: " + sorted.SequenceEqual(expected));
             ConsoleTableBuilder
                 .From(endSubstrings)
                 .WithTitle("Words")
