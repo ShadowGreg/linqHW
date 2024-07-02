@@ -13,18 +13,6 @@ namespace linqHW
 
             List<string> endSubstrings = new List<string>();
 
-            // for (int i = 0; i < Text.Length; i++)
-            // {
-            //     for (int j = 1; j <= Text.Length - i; j++)
-            //     {
-            //         string substring = Text.Substring(i, j);
-            //         endSubstrings.Add(substring);
-            //     }
-            // }
-
-            List<int> countCollection = GetCountCollection(Text);
-
-
             endSubstrings = Enumerable.Range(0, Text.Length)
                 .SelectMany(i => Enumerable.Range(1, Text.Length - i)
                     .Select(j => Text.Substring(i, j))).ToList();
@@ -38,12 +26,6 @@ namespace linqHW
                 .From(endSubstrings)
                 .WithTitle("Words")
                 .ExportAndWriteLine();
-        }
-
-        private static List<int> GetCountCollection(string text)
-        {
-            int i = 0;
-            return text.Select(ch => i++).ToList();
         }
     }
 }
