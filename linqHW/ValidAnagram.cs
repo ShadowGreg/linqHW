@@ -16,7 +16,11 @@
 
         private static bool GetAnswer(string anagram, string nagaram)
         {
-            return anagram.Length == nagaram.Length && anagram.OrderBy(x => x).SequenceEqual(nagaram.OrderBy(x => x));
+            var sum = anagram.Select(c => (int)c)
+                .Sum();
+            var secondSum = nagaram.Select(c => (int)c)
+                .Sum();
+            return sum == secondSum;
         }
     }
 }
