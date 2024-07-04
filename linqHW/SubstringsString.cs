@@ -26,6 +26,6 @@ namespace linqHW
                 .From(endSubstrings)
                 .WithTitle("Words")
                 .ExportAndWriteLine();
-        }
+        } 
     }
 }
